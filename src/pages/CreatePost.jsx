@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { createPost } from "../services/JsonPlaceholder";
+import { useEffect, useState } from "react";
+import { createPost, listUsers } from "../services/JsonPlaceholder";
 
 function CreatePost() {
     const [title, setTitle] = useState('')
@@ -7,6 +7,9 @@ function CreatePost() {
     const [author, setAuthor] = useState(1)
     const [isLoading, setIsLoading] = useState(false)
     const [succeed, setSucceed] = useState(false)
+    const [users, setUsers] = useState([])
+    const [isPending, setIsPending] = useState(true)
+    const [error, setError] = useState(null)
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -24,6 +27,23 @@ function CreatePost() {
             setIsLoading(false)
         }
     }
+
+    const fetchUsers = async() => {
+        try {
+            setIsPending(true)
+            const response = await listUsers()
+            setUsers(response.data)
+        } catch (error) {
+            setError(error.message)
+            console.log(error.message)
+        } finally {
+            setIsPending(false)
+        }
+    }
+
+    useEffect(() => {
+        fetchUsers()
+    }, [])
     return (
         <div className="CreatePost">
             <h2>Crear Post</h2>
@@ -42,13 +62,21 @@ function CreatePost() {
                     onChange={(e) => setBody(e.target.value)}
                 />
                 <label htmlFor="">Autor</label>
-                <select 
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
-                >
-                    <option value="1">Leanne Graham</option>
-                    <option value="2">Ervin Howell</option>
-                </select>
+                { error && 
+                    <div>{ error }</div>
+                }
+                { isPending && <div>Cargando Usuarios...</div> }
+                { !isPending && 
+                    <select 
+                    value={author}
+                    onChange={(e) => setAuthor(e.target.value)}
+                    >
+                        {users.map((user) => {
+                            const {id, name} = user
+                            return <option key={id} value={id}>{name}</option>
+                        })}
+                    </select>
+                }
                 <div>
                 { !isLoading && <button>Registrar Post</button> }
                 { isLoading && <button disabled>Registrando...</button> }

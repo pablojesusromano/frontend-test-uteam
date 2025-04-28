@@ -9,7 +9,7 @@ function Post({ title, id, onDeleteSuccess }) {
             const response = await deletePost(id)
             console.log(response)
             if(onDeleteSuccess) {
-                onDeleteSuccess()
+                onDeleteSuccess(id)
             }
         } catch (error) {
             console.log(error.message)
@@ -24,7 +24,7 @@ function Post({ title, id, onDeleteSuccess }) {
                         <Button className='other-button'>Ver</Button>
                     </Link>
                     <Button className='other-button'>Edit</Button>
-                    <Button className='delete-button' onClick={handleDelete}>Delete</Button>
+                    <Button className='delete-button' onClick={() => handleDelete(id)}>Delete</Button>
                 </div>
             </div>
     )

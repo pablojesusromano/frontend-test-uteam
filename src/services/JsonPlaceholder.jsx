@@ -31,6 +31,10 @@ export const deletePost = async (id) => {
 //#endregion
 
 //#region Users
+export const listUsers = async () => {
+    return axiosInstance.get('/users')
+}
+
 export const getUser = async (id) => {
     return axiosInstance.get(`/users/${id}`)
 }

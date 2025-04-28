@@ -1,10 +1,11 @@
 import { useState } from "react"
 import Post from "./Post"
 
-function PostList({ posts }) {
+function PostList({ posts, setPosts }) {
     const [successMessage, setSuccessMessage] = useState(null)
 
-    const handleSuccess = () => {
+    const handleSuccess = (id) => {
+        setPosts(prevPosts => prevPosts.filter(post => post.id !== id))
         setSuccessMessage('¡Post eliminado exitosamente!')
         setTimeout(() => setSuccessMessage(null), 3000)
     }

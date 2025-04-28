@@ -30,7 +30,7 @@ function Home() {
             <h1>Posts</h1>
             { error && <div>{ error }</div>}
             { isLoading && <div>Cargando...</div>}
-            { posts && <PostList posts={posts} /> }
+            { posts && <PostList posts={posts} setPosts={setPosts} /> }
         </section>
     )
 }
