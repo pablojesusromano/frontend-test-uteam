@@ -54,9 +54,11 @@ body {
 }
 
 .Post {
+    display: grid;
     padding: 10px 16px;
     margin: 20px 0;
     border-bottom: 1px solid #fafafa;
+    gap: 2px;
 }
 
 .Post:hover {
@@ -67,6 +69,51 @@ body {
     font-size: 20px;
     color: #37aaca;
     margin-bottom: 8px;
+}
+
+.post-buttons {
+    gap: 6px;
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    max-width: 100px;
+    border: 2px solid;
+    border-radius: 4px;
+    padding: 10px 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
+    border: 2px solid;
+    border-color: #37aaca;
+    background-color: #37aaca25;
+    color: #37aaca;
+}
+
+.other-button {
+    background-color: #37aaca;
+    border-color: #37aaca;
+}
+
+.other-button:hover {
+    border-color: #37aaca;
+    background-color: #37aaca25;
+    color: #37aaca;
+}
+
+.delete-button {
+    background-color: #da4e4e;
+    border-color: #da4e4e;
+}
+
+.delete-button:hover {
+    border-color: #da4e4e;
+    background-color: #da4e4e25;
+    color: #da4e4e;
 }
 
 .CreatePostLink {

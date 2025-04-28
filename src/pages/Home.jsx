@@ -22,9 +22,7 @@ function Home() {
     }
     
     useEffect(() => {
-        setTimeout(() => {
-            fetchPosts()
-        }, 1000)
+        fetchPosts()
     }, [])
 
     return (
