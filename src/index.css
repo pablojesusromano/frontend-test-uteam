@@ -52,3 +52,90 @@ body {
 .PostList a {
     text-decoration: none;
 }
+
+.Post {
+    padding: 10px 16px;
+    margin: 20px 0;
+    border-bottom: 1px solid #fafafa;
+}
+
+.Post:hover {
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+
+.Post h2 {
+    font-size: 20px;
+    color: #37aaca;
+    margin-bottom: 8px;
+}
+
+.CreatePostLink {
+    margin-left: 20px;
+    border: 2px solid;
+    border-color: #37aaca;
+    border-radius: 4px;
+    padding: 10px 16px;
+    background-color: #37aaca;
+    color: #fff;
+    text-decoration: none;
+}
+
+.CreatePostLink:hover {
+    cursor: pointer;
+    border: 2px solid;
+    border-color: #37aaca;
+    background-color: #37aaca25;
+    color: #37aaca;
+}
+
+.CreatePost {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.CreatePost h2 {
+    font-size: 20px;
+    color: #37aaca;
+    margin-bottom: 30px;
+}
+
+.CreatePost label {
+    text-align: left;
+    display: block;
+}
+
+.CreatePost input, .CreatePost textarea, .CreatePost select {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: block;
+}
+
+.CreatePost button {
+    margin-left: 20px;
+    border: 2px solid;
+    border-color: #37aaca;
+    border-radius: 4px;
+    padding: 10px 16px;
+    background-color: #37aaca;
+    color: #fff;
+    cursor: pointer;
+}
+
+.CreatePost button:hover {
+    cursor: pointer;
+    border: 2px solid;
+    border-color: #37aaca;
+    background-color: #37aaca25;
+    color: #37aaca;
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    display: block;
+    margin-top: 8px;
+}

@@ -5,6 +5,7 @@ function Navbar() {
         <nav className="Navbar">
             <h1>Uteam Frontend Test</h1>
             <Link className="links" to="/">Home</Link>
+            <Link className="CreatePostLink" to="/posts/create">Crear Post</Link>
         </nav>
     )
 }

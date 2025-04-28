@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import Navbar from '../components/Navbar'
 import { useEffect, useState } from "react"
 import { listPosts } from "../services/JsonPlaceholder"
 import PostList from "../components/PostList"
@@ -29,7 +28,7 @@ function Home() {
     }, [])
 
     return (
-        <section className="Posts">
+        <section className="Home">
             <h1>Posts</h1>
             { error && <div>{ error }</div>}
             { isLoading && <div>Cargando...</div>}

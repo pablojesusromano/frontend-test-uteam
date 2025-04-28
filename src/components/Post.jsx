@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import './Post.css'
 
 function Post({ title, id }) {
     return (
