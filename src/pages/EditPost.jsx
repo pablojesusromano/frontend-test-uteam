@@ -28,10 +28,9 @@ function EditPost() {
             }
             if(!isStored){
                 const response = await editPost(id)
-                updatedPost = response.data
+                console.log(response.data)
             }
-            updatePost(updatedPost)
-            console.log(updatedPost)
+            updatePost(updatedPost, isStored)
             setSucceed(true)
         } catch (error) {
             console.error('Error al editar el post', error)
@@ -56,11 +55,11 @@ function EditPost() {
     useEffect(() => {
         const fetchPost = async(id) => {
             try {
-                const storedPosts = JSON.parse(localStorage.getItem('createdPosts'))
+                const storedPosts = JSON.parse(localStorage.getItem('createdPosts')) || []
                 let title = ''
                 let body = ''
                 let author = 1
-                if(storedPosts.length > 0 && storedPosts.map(post => post.id).includes(id)) {
+                if(storedPosts.length > 0 && storedPosts.map(post => post.id).includes(parseInt(id))) {
                     const storedPost = storedPosts.filter(post => post.id === parseInt(id))
                     title = storedPost[0].title
                     body = storedPost[0].body
@@ -71,7 +70,6 @@ function EditPost() {
                     title = response.data.title
                     body = response.data.body
                     author = response.data.userId
-                    setIsStored(false)
                 }
                 setTitle(title)
                 setBody(body)

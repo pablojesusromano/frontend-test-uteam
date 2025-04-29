@@ -7,7 +7,7 @@ function Home() {
 
     return (
         <section className="Home">
-            <button className="other-button" style={{ minWidth: '200px'}} onClick={clearStoredPosts}>Resetear Posts Locales</button>
+            <button className="other-button" style={{ minWidth: '200px'}} onClick={clearStoredPosts}>Eliminar Posts Locales</button>
             <h1>Posts</h1>
             { error && <div>{ error }</div>}
             { isLoading && <div>Cargando...</div>}
