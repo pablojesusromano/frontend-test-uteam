@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Post from "./Post"
+import { PostsContext } from "../contexts/PostsContext"
 
-function PostList({ posts, setPosts }) {
+function PostList({ posts }) {
     const [successMessage, setSuccessMessage] = useState(null)
+    const { removePost } = useContext(PostsContext)
 
     const handleSuccess = (id) => {
-        setPosts(prevPosts => prevPosts.filter(post => post.id !== id))
+        removePost(id)
         setSuccessMessage('¡Post eliminado exitosamente!')
         setTimeout(() => setSuccessMessage(null), 3000)
     }

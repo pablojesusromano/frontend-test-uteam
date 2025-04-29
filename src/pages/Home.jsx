@@ -1,36 +1,17 @@
-import { Link } from "react-router-dom"
-import { useEffect, useState } from "react"
-import { listPosts } from "../services/JsonPlaceholder"
+import { useContext } from "react"
 import PostList from "../components/PostList"
+import { PostsContext } from "../contexts/PostsContext"
 
 function Home() {
-    const [posts, setPosts] = useState(null)
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState(null)
-
-    const fetchPosts = async() => {
-        try {
-            const response = await listPosts()
-            setPosts(response.data)
-            setError(null)
-            setIsLoading(false)
-        } catch (error) {
-            setIsLoading(false)
-            setError(error.message)
-            console.error('Error al obtener los posts', error)
-        }
-    }
-    
-    useEffect(() => {
-        fetchPosts()
-    }, [])
+    const { posts, isLoading, error, clearStoredPosts } = useContext(PostsContext)
 
     return (
         <section className="Home">
+            <button className="other-button" style={{ minWidth: '200px'}} onClick={clearStoredPosts}>Resetear Posts Locales</button>
             <h1>Posts</h1>
             { error && <div>{ error }</div>}
             { isLoading && <div>Cargando...</div>}
-            { posts && <PostList posts={posts} setPosts={setPosts} /> }
+            { posts && <PostList posts={posts} /> }
         </section>
     )
 }

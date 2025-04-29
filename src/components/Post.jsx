@@ -23,7 +23,9 @@ function Post({ title, id, onDeleteSuccess }) {
                     <Link to={`/posts/${id}`}>
                         <Button className='other-button'>Ver</Button>
                     </Link>
-                    <Button className='other-button'>Edit</Button>
+                    <Link to={`/posts/edit/${id}`}>
+                        <Button className='other-button'>Edit</Button>
+                    </Link>
                     <Button className='delete-button' onClick={() => handleDelete(id)}>Delete</Button>
                 </div>
             </div>

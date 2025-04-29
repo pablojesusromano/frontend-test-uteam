@@ -11,8 +11,14 @@ function PostDetails() {
     useEffect(() => {
         const fetchPosts = async() => {
             try {
-                const response = await getPost(id)
-                setPost(response.data)
+                const storedPosts = JSON.parse(localStorage.getItem('createdPosts'))
+                if(storedPosts.length > 0) {
+                    const storedPost = storedPosts.filter(post => post.id !== id)
+                    setPost(...storedPost)
+                } else {
+                    const response = await getPost(id)
+                    setPost(response.data)
+                }
                 setError(null)
                 setIsLoading(false)
             } catch (error) {

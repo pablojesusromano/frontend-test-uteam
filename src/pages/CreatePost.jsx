@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createPost, listUsers } from "../services/JsonPlaceholder";
+import { PostsContext } from "../contexts/PostsContext";
 
 function CreatePost() {
     const [title, setTitle] = useState('')
@@ -10,6 +11,7 @@ function CreatePost() {
     const [users, setUsers] = useState([])
     const [isPending, setIsPending] = useState(true)
     const [error, setError] = useState(null)
+    const { addPost } = useContext(PostsContext)
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -17,6 +19,7 @@ function CreatePost() {
         setIsLoading(true)
         try {
             const response = await createPost(post)
+            addPost(response.data)
             console.log(response.data)
             if(response.status === 201){
                 setSucceed(true)
